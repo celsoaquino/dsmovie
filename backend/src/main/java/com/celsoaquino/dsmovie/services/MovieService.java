@@ -3,20 +3,19 @@ package com.celsoaquino.dsmovie.services;
 import com.celsoaquino.dsmovie.dto.MovieDTO;
 import com.celsoaquino.dsmovie.entities.Movie;
 import com.celsoaquino.dsmovie.repositories.MovieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class MovieService {
 
-    @Autowired
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
     @Transactional(readOnly = true)
     public Page<MovieDTO> findAll(Pageable pageable) {
