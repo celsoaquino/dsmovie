@@ -18,7 +18,6 @@ public class ScoreController {
         this.scoreService = scoreService;
     }
 
-
     @PutMapping()
     public MovieDTO SaveScore(@RequestBody ScoreDTO scoreDTO) {
         var dto = scoreService.saveScore(scoreDTO);
